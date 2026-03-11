@@ -45,10 +45,10 @@ function NetworkMesh() {
 
   if (positions.current[0] === 0 && positions.current[1] === 0) {
     for (let i = 0; i < particleCount; i++) {
-      positions.current[i * 3] = (Math.random() - 0.5) * 16;
+      positions.current[i * 3]     = (Math.random() - 0.5) * 16;
       positions.current[i * 3 + 1] = (Math.random() - 0.5) * 10;
       positions.current[i * 3 + 2] = (Math.random() - 0.5) * 8 - 3;
-      velocities.current[i * 3] = (Math.random() - 0.5) * 0.003;
+      velocities.current[i * 3]     = (Math.random() - 0.5) * 0.003;
       velocities.current[i * 3 + 1] = (Math.random() - 0.5) * 0.003;
       velocities.current[i * 3 + 2] = (Math.random() - 0.5) * 0.002;
     }
@@ -59,10 +59,10 @@ function NetworkMesh() {
     const pos = positions.current;
     const vel = velocities.current;
     for (let i = 0; i < particleCount; i++) {
-      pos[i * 3] += vel[i * 3];
+      pos[i * 3]     += vel[i * 3];
       pos[i * 3 + 1] += vel[i * 3 + 1];
       pos[i * 3 + 2] += vel[i * 3 + 2];
-      if (Math.abs(pos[i * 3]) > 8) vel[i * 3] *= -1;
+      if (Math.abs(pos[i * 3])     > 8) vel[i * 3]     *= -1;
       if (Math.abs(pos[i * 3 + 1]) > 5) vel[i * 3 + 1] *= -1;
       if (Math.abs(pos[i * 3 + 2]) > 4) vel[i * 3 + 2] *= -1;
     }
@@ -74,9 +74,7 @@ function NetworkMesh() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          array={positions.current}
-          count={particleCount}
-          itemSize={3}
+          args={[positions.current, 3]}
         />
       </bufferGeometry>
       <pointsMaterial size={0.04} color="#14b8a6" transparent opacity={0.5} sizeAttenuation />
@@ -95,15 +93,15 @@ function HeroShapes() {
       </Float>
 
       <GlowNode position={[-3.5, 1.5, -1]} color="#14b8a6" scale={0.1} />
-      <GlowNode position={[3.2, -1, -2]} color="#8b5cf6" scale={0.08} />
-      <GlowNode position={[-1.5, -2, 0]} color="#f59e0b" scale={0.06} />
-      <GlowNode position={[2, 2.5, -1.5]} color="#14b8a6" scale={0.07} />
-      <GlowNode position={[0.5, -0.5, 1]} color="#8b5cf6" scale={0.05} />
+      <GlowNode position={[3.2, -1, -2]}   color="#8b5cf6" scale={0.08} />
+      <GlowNode position={[-1.5, -2, 0]}   color="#f59e0b" scale={0.06} />
+      <GlowNode position={[2, 2.5, -1.5]}  color="#14b8a6" scale={0.07} />
+      <GlowNode position={[0.5, -0.5, 1]}  color="#8b5cf6" scale={0.05} />
 
-      <FloatingCube position={[-4, -1.5, -2]} color="#8b5cf6" speed={0.6} />
-      <FloatingCube position={[4.5, 2, -3]} color="#14b8a6" speed={0.8} />
-      <FloatingCube position={[1.5, 3, -1]} color="#f59e0b" speed={0.5} />
-      <FloatingCube position={[-2, 3, -2.5]} color="#14b8a6" speed={0.7} />
+      <FloatingCube position={[-4, -1.5, -2]}  color="#8b5cf6" speed={0.6} />
+      <FloatingCube position={[4.5, 2, -3]}    color="#14b8a6" speed={0.8} />
+      <FloatingCube position={[1.5, 3, -1]}    color="#f59e0b" speed={0.5} />
+      <FloatingCube position={[-2, 3, -2.5]}   color="#14b8a6" speed={0.7} />
     </>
   );
 }
@@ -112,9 +110,9 @@ export default function HeroScene3D() {
   return (
     <Canvas camera={{ position: [0, 0, 8], fov: 50 }} style={{ position: 'absolute', inset: 0 }}>
       <ambientLight intensity={0.1} />
-      <pointLight position={[5, 5, 5]} color="#14b8a6" intensity={0.6} distance={20} />
+      <pointLight position={[5, 5, 5]}   color="#14b8a6" intensity={0.6} distance={20} />
       <pointLight position={[-5, -3, 3]} color="#8b5cf6" intensity={0.4} distance={15} />
-      <pointLight position={[0, 4, -4]} color="#f59e0b" intensity={0.3} distance={12} />
+      <pointLight position={[0, 4, -4]}  color="#f59e0b" intensity={0.3} distance={12} />
 
       <HeroShapes />
       <NetworkMesh />

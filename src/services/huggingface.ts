@@ -324,7 +324,6 @@ export async function generateAttackPrompts(
     try {
       const { system, user } = buildAttackerPrompt(attackType, i);
 
-      const startTime = performance.now();
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 25000);
 
