@@ -3,7 +3,7 @@ import type { ModelInfo, ResponseLog } from '../types';
 // HuggingFace Router API — new endpoint replacing api-inference.huggingface.co
 // Correct format: single endpoint /v1/chat/completions — provider auto-selected by model ID in body
 // Requests go through Vite proxy: /hf-api → router.huggingface.co
-const HF_ROUTER_BASE = '/hf-api';
+const HF_ROUTER_BASE = 'https://router.huggingface.co';
 
 function getChatUrl(): string {
   return `${HF_ROUTER_BASE}/v1/chat/completions`;
